@@ -1,8 +1,12 @@
 package com.lotto.extract.service;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,11 +38,13 @@ public class ExtractService {
 
 	public List<LottoNumberBaseVo> expectationNumberExtract() {
 		List<LottoNumberBaseVo> winningNumberList = dao.getAllWinningNumber();
-		statisticsNumber(winningNumberList);
+		
+		StatisticsVo statisticsResult = statisticsNumber(winningNumberList);
+		List<LottoNumberBaseVo> expectResult = expectNumber(statisticsResult);
 		return winningNumberList;
 	}
 	
-	private void statisticsNumber(List<LottoNumberBaseVo> numberList) {
+	private StatisticsVo statisticsNumber(List<LottoNumberBaseVo> numberList) {
 		
 		int allCount = 0;
 		StatisticsVo statistic = new StatisticsVo();
@@ -119,6 +125,46 @@ public class ExtractService {
 		
 		statistic.setAllCount(allCount);
 		statistic.setNumberWinningCount(numberWinningCountMap);
-		statistic.setNumberWinningProbability(null);
+		
+		Set<String> keySet = numberWinningCountMap.keySet();
+		int keySize = keySet.size();
+		Iterator<String> iter = keySet.iterator();
+		
+		HashMap<String, Double> setNumberWinningProbability = new HashMap<String, Double>();
+		DecimalFormat dformat = new DecimalFormat("####.#####");
+		double probabilitySum = 0;
+		while(iter.hasNext()) {
+			String key = iter.next();
+			int value = numberWinningCountMap.get(key);
+			double  probability = (double)value / (double)allCount;
+			probabilitySum = Double.sum(probabilitySum, probability);
+			setNumberWinningProbability.put(key, probability);
+		}
+		
+		double standardProbability = probabilitySum / keySize;
+		statistic.setNumberWinningProbability(setNumberWinningProbability);
+		statistic.setStandardProbability(standardProbability);
+		
+		System.out.println("statistic = " + standardProbability);
+		return statistic;
+	}
+	
+	private List<LottoNumberBaseVo> expectNumber(StatisticsVo param) {
+		List<Integer> expectNumber = new ArrayList<>();
+		
+		double standardProbability = param.getStandardProbability();
+		Map<String, Double> proMap = param.getNumberWinningProbability();
+		Iterator<String> iter = proMap.keySet().iterator();
+		
+		while(iter.hasNext()) {
+			String key = iter.next();
+			double value = proMap.get(key);
+			
+			if(value < standardProbability) {
+				expectNumber.add(Integer.parseInt(key));
+			}
+		}
+		
+		return null;
 	}
 }

@@ -8,7 +8,8 @@ public class StatisticsVo {
 	private String statisticDate;
 	private int allCount;
 	private Map<String, Integer> numberWinningCount;
-	private Map<String, Integer> numberWinningProbability;
+	private Map<String, Double> numberWinningProbability;
+	private double standardProbability;
 	
 	public int getTx() {
 		return tx;
@@ -34,11 +35,17 @@ public class StatisticsVo {
 	public void setNumberWinningCount(Map<String, Integer> numberWinningCount) {
 		this.numberWinningCount = numberWinningCount;
 	}
-	public Map<String, Integer> getNumberWinningProbability() {
+	public Map<String, Double> getNumberWinningProbability() {
 		return numberWinningProbability;
 	}
-	public void setNumberWinningProbability(Map<String, Integer> numberWinningProbability) {
+	public void setNumberWinningProbability(Map<String, Double> numberWinningProbability) {
 		this.numberWinningProbability = numberWinningProbability;
+	}
+	public double getStandardProbability() {
+		return standardProbability;
+	}
+	public void setStandardProbability(double standardProbability) {
+		this.standardProbability = standardProbability;
 	}
 	
 }
