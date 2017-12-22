@@ -14,14 +14,25 @@ public class ExtractService {
 	@Autowired
 	private ExtractDao dao;
 	
-	public LottoNumberBaseVo getWinnigNuber(int cnt) {
+	public LottoNumberBaseVo getWinningNumberOneByCnt(int cnt) {
 		
-		LottoNumberBaseVo result = dao.getWinningNumber(1);
+		LottoNumberBaseVo result = dao.getWinningNumberOneByCnt(cnt);
 		return result;
 	}
 
-	public List<LottoNumberBaseVo> getWinningNumberAll() {
-		List<LottoNumberBaseVo> result = dao.getWinningNumberAll();
+	public List<LottoNumberBaseVo> getAllWinningNumber() {
+		List<LottoNumberBaseVo> result = dao.getAllWinningNumber();
 		return result;
+	}
+	
+	public void insertWinningNumber(LottoNumberBaseVo param) {
+		dao.insertWinningNumber(param);
+	}
+
+	public List<LottoNumberBaseVo> expectationNumberExtract() {
+		List<LottoNumberBaseVo> winningNumberList = dao.getAllWinningNumber();
+
+		
+		return null;
 	}
 }
