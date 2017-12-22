@@ -2,20 +2,27 @@ package com.lotto.extract.vo;
 
 public class LottoNumberBaseVo {
 
-	private int cnt;
+	private int drwNo;
+	private String winningDate;
 	private int number1;
 	private int number2;
 	private int number3;
 	private int number4;
 	private int number5;
 	private int number6;
-	private int bonusNumber;
+	private int bnusNo;
 	
-	public int getCnt() {
-		return cnt;
+	public int getDrwNo() {
+		return drwNo;
 	}
-	public void setCnt(int cnt) {
-		this.cnt = cnt;
+	public void setDrwNo(int drwNo) {
+		this.drwNo = drwNo;
+	}
+	public String getWinningDate() {
+		return winningDate;
+	}
+	public void setWinningDate(String winningDate) {
+		this.winningDate = winningDate;
 	}
 	public int getNumber1() {
 		return number1;
@@ -53,11 +60,11 @@ public class LottoNumberBaseVo {
 	public void setNumber6(int number6) {
 		this.number6 = number6;
 	}
-	public int getBonusNumber() {
-		return bonusNumber;
+	public int getBnusNo() {
+		return bnusNo;
 	}
-	public void setBonusNumber(int bonusNumber) {
-		this.bonusNumber = bonusNumber;
+	public void setBnusNo(int bnusNo) {
+		this.bnusNo = bnusNo;
 	}
 	
 }

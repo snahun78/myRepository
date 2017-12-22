@@ -7,14 +7,14 @@
 
 	<script type="text/template" id="inputRow">
 	<tr>
-		<td><input type="text" id="cnt" name="cnt" value="" style="width: 50px"></td>
+		<td><input type="text" id="drwNo" name="drwNo" value="" style="width: 50px"></td>
 		<td><input type="text" id="number1" name="number1" value=""></td>
 		<td><input type="text" id="number2" name="number2" value=""></td>
 		<td><input type="text" id="number3" name="number3" value=""></td>
 		<td><input type="text" id="number4" name="number4" value=""></td>
 		<td><input type="text" id="number5" name="number5" value=""></td>
 		<td><input type="text" id="number6" name="number6" value=""></td>
-		<td><input type="text" id="bonusNumber" name="bonusNumber" value=""></td>
+		<td><input type="text" id="bnusNo" name="bnusNo" value=""></td>
 	</tr>
 	</script>
 	
@@ -26,7 +26,7 @@
 			});
 			
 			$('#searchData').on("click", function(){
-				var searchCnt = $("#cnt").val();
+				var searchCnt = $("#drwNo").val();
 				
 				if(!searchCnt){
 					if(confirm("차수를 입력하지 않으면 모든 데이터가 조회됩니다.")){
@@ -65,14 +65,14 @@
 				var datas = [];
 				var numberVo = {};//$("#inputForm").serialize();
 				
-				numberVo.cnt = $("#cnt").val();
+				numberVo.drwNo = $("#drwNo").val();
 				numberVo.number1 = $("#number1").val();
 				numberVo.number2 = $("#number2").val();
 				numberVo.number3 = $("#number3").val();
 				numberVo.number4 = $("#number4").val();
 				numberVo.number5 = $("#number5").val();
 				numberVo.number6 = $("#number6").val();
-				numberVo.bonusNumber = $("#bonusNumber").val();
+				numberVo.bnusNo = $("#bnusNo").val();
 				
 				console.log(numberVo);
 				$.ajax({
@@ -104,7 +104,7 @@
 	<div class="alert alert-secondary" role="alert">
 		<div>총 입력 수 : ${count}</div>
 		
-		<div>마지막 입력 회차 : <c:if test="${lastItem != null && lastItem.cnt != null }">${lastItem.cnt }</c:if></div>
+		<div>마지막 입력 회차 : <c:if test="${lastItem != null && lastItem.drwNo != null }">${lastItem.drwNo }</c:if></div>
 	</div>
 	
 	<form id="inputForm">
@@ -123,14 +123,14 @@
 			</thead>
 			<tbody id="inputTbody">
 				<tr>
-					<td><input type="text" id="cnt" name="cnt" value="" style="width: 50px"></td>
+					<td><input type="text" id="drwNo" name="drwNo" value="" style="width: 50px"></td>
 					<td><input type="text" id="number1" name="number1" value=""></td>
 					<td><input type="text" id="number2" name="number2" value=""></td>
 					<td><input type="text" id="number3" name="number3" value=""></td>
 					<td><input type="text" id="number4" name="number4" value=""></td>
 					<td><input type="text" id="number5" name="number5" value=""></td>
 					<td><input type="text" id="number6" name="number6" value=""></td>
-					<td><input type="text" id="bonusNumber" name="bonusNumber" value=""></td>
+					<td><input type="text" id="bnusNo" name="bnusNo" value=""></td>
 				</tr>
 			</tbody>
 		</table>

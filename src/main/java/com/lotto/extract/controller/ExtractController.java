@@ -47,7 +47,7 @@ public class ExtractController {
 	public List<LottoNumberBaseVo> expectationNumberExtract(){
 		List<LottoNumberBaseVo> result = new ArrayList<>();
 		
-		service.expectationNumberExtract();
+		List<LottoNumberBaseVo> allWinningData = service.expectationNumberExtract();
 		
 		return result;
 	}

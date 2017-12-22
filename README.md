@@ -11,7 +11,8 @@ git push -u origin master
 -----------------------------------------------------------------------------------------------
 …or push an existing repository from the command line
 
-git remote add origin https://github.com/snahun78/myRepository.git
+git add --all
+git commit -m "commit"
 git push -u origin master
 
 -----------------------------------------------------------------------------------------------
