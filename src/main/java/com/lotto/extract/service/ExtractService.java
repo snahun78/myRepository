@@ -42,7 +42,7 @@ public class ExtractService {
 		
 		int allCount = 0;
 		StatisticsVo statistic = new StatisticsVo();
-		Map<String, Integer> numberWinningCount = new HashMap<String, Integer>();
+		Map<String, Integer> numberWinningCountMap = new HashMap<String, Integer>();
 		
 		for (LottoNumberBaseVo item : numberList) {
 			int number1 = item.getNumber1();
@@ -54,38 +54,71 @@ public class ExtractService {
 			int bnusNo = item.getBnusNo();
 			
 			String key = String.valueOf(number1);
-			int count1 = numberWinningCount.get(key);
-			numberWinningCount.put(key, count1++);
+			int count1 = 0;
+			if(numberWinningCountMap.containsKey(key)) {
+				count1 = numberWinningCountMap.get(key);				
+			}
+			numberWinningCountMap.put(key, ++count1);
 			
 			key = String.valueOf(number2);
-			count1 = numberWinningCount.get(key);
-			numberWinningCount.put(key, count1++);
+			if(numberWinningCountMap.containsKey(key)) {
+				count1 = numberWinningCountMap.get(key);
+			}
+			else {
+				count1 = 0;
+			}
+			numberWinningCountMap.put(key, ++count1);
 			
 			key = String.valueOf(number3);
-			count1 = numberWinningCount.get(key);
-			numberWinningCount.put(key, count1++);
+			if(numberWinningCountMap.containsKey(key)) {
+				count1 = numberWinningCountMap.get(key);
+			}
+			else {
+				count1 = 0;
+			}
+			numberWinningCountMap.put(key, ++count1);
 			
 			key = String.valueOf(number4);
-			count1 = numberWinningCount.get(key);
-			numberWinningCount.put(key, count1++);
+			if(numberWinningCountMap.containsKey(key)) {
+				count1 = numberWinningCountMap.get(key);
+			}
+			else {
+				count1 = 0;
+			}
+			numberWinningCountMap.put(key, ++count1);
 			
 			key = String.valueOf(number5);
-			count1 = numberWinningCount.get(key);
-			numberWinningCount.put(key, count1++);
+			if(numberWinningCountMap.containsKey(key)) {
+				count1 = numberWinningCountMap.get(key);
+			}
+			else {
+				count1 = 0;
+			}
+			numberWinningCountMap.put(key, ++count1);
+			
+			key = String.valueOf(number6);
+			if(numberWinningCountMap.containsKey(key)) {
+				count1 = numberWinningCountMap.get(key);
+			}
+			else {
+				count1 = 0;
+			}
+			numberWinningCountMap.put(key, ++count1);
 			
 			key = String.valueOf(bnusNo);
-			count1 = numberWinningCount.get(key);
-			numberWinningCount.put(key, count1++);
-			
-			key = String.valueOf(number2);
-			count1 = numberWinningCount.get(key);
-			numberWinningCount.put(key, count1++);
+			if(numberWinningCountMap.containsKey(key)) {
+				count1 = numberWinningCountMap.get(key);
+			}
+			else {
+				count1 = 0;
+			}
+			numberWinningCountMap.put(key, ++count1);
 			
 			allCount++;
 		}
 		
 		statistic.setAllCount(allCount);
-		statistic.setNumberWinningCount(numberWinningCount);
+		statistic.setNumberWinningCount(numberWinningCountMap);
 		statistic.setNumberWinningProbability(null);
 	}
 }
